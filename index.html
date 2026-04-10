@@ -295,7 +295,7 @@ const PICKS = {
 };
 
 const ALL_GOLFERS = [...new Set(Object.values(PICKS).flat())];
-let golferData = {};
+let golferData = {}; let manualMode = false;
 ALL_GOLFERS.forEach(g => { golferData[g] = { pos: null, score: null, thru: null, missedCut: false, status: 'TBD' }; });
 
 function posToPoints(pos, missedCut) {
