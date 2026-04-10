@@ -481,6 +481,7 @@ function applyManual() {
     const mc = document.getElementById('ms_'+i).value === 'mc';
     golferData[g] = { pos: isNaN(posVal)?null:posVal, score:null, thru:null, missedCut:mc, status: mc?'CUT':(isNaN(posVal)?'TBD':'Active') };
   });
+  manualMode = true;
   setStatus('Manual scores applied.');
   setPill('manual','MANUAL MODE');
   renderAll();
