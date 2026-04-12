@@ -482,14 +482,19 @@ function applyManual() {
     golferData[g] = { pos: isNaN(posVal)?null:posVal, score:null, thru:null, missedCut:mc, status: mc?'CUT':(isNaN(posVal)?'TBD':'Active') };
   });
   manualMode = true;
-  localStorage.setItem('savedScores', JSON.stringify(golferData));
-  localStorage.setItem('manualMode', 'true');
+  const data = {};
+  ALL_GOLFERS.forEach((g,i) => {
+    const posVal = parseInt(document.getElementById('mp_'+i).value);
+    const mc = document.getElementById('ms_'+i).value === 'mc';
+    data[i] = (mc ? 'MC' : (isNaN(posVal) ? '' : posVal));
+  });
+  const encoded = btoa(JSON.stringify(data));
+  history.replaceState(null, '', '?scores=' + encoded);
   setStatus('Manual scores applied.');
   setPill('manual','MANUAL MODE');
   renderAll();
   showTab('standings', document.querySelectorAll('.tab-btn')[0]);
 }
-
 function clearManual() {
   ALL_GOLFERS.forEach((_,i) => {
     document.getElementById('mp_'+i).value='';
