@@ -505,7 +505,17 @@ function showTab(name, btn) {
   if(name==='manual') buildManualGrid();
 }
 
-loadLive();
+const _saved = localStorage.getItem('savedScores');
+const _manual = localStorage.getItem('manualMode');
+if (_saved && _manual === 'true') {
+  golferData = JSON.parse(_saved);
+  manualMode = true;
+  setStatus('Manual scores restored.');
+  setPill('manual','MANUAL MODE');
+  renderAll();
+} else {
+  loadLive();
+}
 setInterval(loadLive, 60000);
 </script>
 </body>
