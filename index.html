@@ -452,23 +452,18 @@ function buildManualGrid() {
     '<select id="ms_'+i+'"><option value="active">Active</option><option value="mc">MC</option></select>' +
     '</div>'
   ).join('');
-}
   ALL_GOLFERS.forEach((g,i) => {
-  const d = golferData[g];
-  if (d&&d.pos) document.getElementById('mp_'+i).value = d.pos;
-  if (d&&d.score!==null&&d.score!==undefined) document.getElementById('msc_'+i).value = d.score;
-  if (d&&d.thru) document.getElementById('mth_'+i).value = d.thru;
-  if (d&&d.missedCut) document.getElementById('ms_'+i).value = 'mc';
+    const d = golferData[g];
+    if (d&&d.pos) document.getElementById('mp_'+i).value = d.pos;
+    if (d&&d.missedCut) document.getElementById('ms_'+i).value = 'mc';
   });
 }
+
 function applyManual() {
   ALL_GOLFERS.forEach((g,i) => {
     const posVal = parseInt(document.getElementById('mp_'+i).value);
     const mc = document.getElementById('ms_'+i).value === 'mc';
-    const scoreVal = parseInt(document.getElementById('msc_'+i).value);
-const thruVal = document.getElementById('mth_'+i).value.trim();
-  }
-golferData[g] = { pos: isNaN(posVal)?null:posVal, score:isNaN(scoreVal)?null:scoreVal, thru:thruVal||null, missedCut:mc, status: mc?'CUT':(isNaN(posVal)?'TBD':'Active') };
+    golferData[g] = { pos: isNaN(posVal)?null:posVal, score:null, thru:null, missedCut:mc, status: mc?'CUT':(isNaN(posVal)?'TBD':'Active') };
   });
   manualMode = true;
   localStorage.setItem('savedScores', JSON.stringify(golferData));
