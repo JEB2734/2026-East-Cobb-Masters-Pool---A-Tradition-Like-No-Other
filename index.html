@@ -453,11 +453,12 @@ function buildManualGrid() {
     '</div>'
   ).join('');
   ALL_GOLFERS.forEach((g,i) => {
-    const d = golferData[g];
-    if (d&&d.pos) document.getElementById('mp_'+i).value = d.pos;
-    if (d&&d.missedCut) document.getElementById('ms_'+i).value = 'mc';
-  });
-}
+  const d = golferData[g];
+  if (d&&d.pos) document.getElementById('mp_'+i).value = d.pos;
+  if (d&&d.score!==null&&d.score!==undefined) document.getElementById('msc_'+i).value = d.score;
+  if (d&&d.thru) document.getElementById('mth_'+i).value = d.thru;
+  if (d&&d.missedCut) document.getElementById('ms_'+i).value = 'mc';
+});
 
 function applyManual() {
   ALL_GOLFERS.forEach((g,i) => {
