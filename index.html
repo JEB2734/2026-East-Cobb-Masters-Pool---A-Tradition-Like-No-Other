@@ -488,14 +488,6 @@ function applyManual() {
   renderAll();
   showTab('standings', document.querySelectorAll('.tab-btn')[0]);
 }
-  const encoded = btoa(JSON.stringify(data));
-  history.replaceState(null, '', '?scores=' + encoded);
-  manualMode = true;
-  setStatus('Manual scores applied.');
-  setPill('manual','MANUAL MODE');
-  renderAll();
-  showTab('standings', document.querySelectorAll('.tab-btn')[0]);
-}
 function clearManual() {
   ALL_GOLFERS.forEach((_,i) => {
     document.getElementById('mp_'+i).value='';
