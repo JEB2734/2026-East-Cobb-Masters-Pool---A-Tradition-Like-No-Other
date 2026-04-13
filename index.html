@@ -474,7 +474,7 @@ function applyManual() {
   });
   manualMode = true;
   localStorage.setItem('savedScores', JSON.stringify(golferData));
-  setStatus('Scores saved.');
+  setStatus('Final Standings.');
   setPill('manual','Final Standings');
   renderAll();
   showTab('standings', document.querySelectorAll('.tab-btn')[0]);
