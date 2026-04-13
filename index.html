@@ -500,11 +500,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const saved = localStorage.getItem('savedScores');
   if (saved) {
     golferData = JSON.parse(saved);
-    setStatus('Scores loaded.');
-    setPill('manual','MANUAL MODE');
+    setStatus('Final Standings.');
+    setPill('manual','Final Standings');
   } else {
     setStatus('Use Manual Entry to enter scores.');
-    setPill('manual','MANUAL MODE');
+    setPill('manual','Final Standings');
   }
   renderAll();
 });
