@@ -402,7 +402,7 @@ function renderStandings() {
     html += '<div class="group-label">'+g.label+'</div>';
     html += '<table><thead><tr>';
     html += '<th style="width:36px;">#</th><th>Player</th><th>Picks</th>';
-    html += '<th class="r">Pts</th><th class="r">Best</th>';
+    html += '<th class="r">Pts</th>';
     html += '</tr></thead><tbody>';
     g.slice.forEach(r => {
       const rClass = rank===1?'rank-1':rank===2?'rank-2':rank===3?'rank-3':'';
