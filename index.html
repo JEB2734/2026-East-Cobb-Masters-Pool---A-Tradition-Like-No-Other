@@ -320,23 +320,9 @@ function scoreClass(s) {
   return s<0?'under':'over';
 }
 
-async function loadLive() {
- if (manualMode) return;
-  setStatus('Fetching live scores…');
-  try {
-    const r = await fetch('https://site.api.espn.com/apis/site/v2/sports/golf/pga/scoreboard');
-    if (!r.ok) throw new Error('ESPN unavailable');
-    const d = await r.json();
-    const parsed = parseESPN(d);
-    if (Object.keys(parsed).length > 0) {
-      mergeData(parsed);
-      const t = new Date().toLocaleTimeString();
-      setStatus('Live — updated ' + t);
-      setPill('live','● LIVE');
-      renderAll(); return;
-    }
-  } catch(e) {}
-  setStatus('Live data unavailable — use Manual Entry to enter scores.');
+function loadLive() {
+  if (manualMode) return;
+  setStatus('Live data unavailable — use Manual Entry.');
   setPill('manual','MANUAL MODE');
   renderAll();
 }
