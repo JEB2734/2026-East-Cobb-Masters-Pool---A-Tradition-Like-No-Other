@@ -546,6 +546,9 @@ document.addEventListener('DOMContentLoaded', function() {
   setStatus('2026 Masters — Final Results');
   setPill('manual','FINAL STANDINGS');
   renderAll();
+
+  document.querySelectorAll('#tab-manual input, #tab-manual select, #tab-manual button')
+    .forEach(el => el.disabled = true);
 });
 </script>
 </body>
